@@ -231,11 +231,11 @@ function ChatsSidebar(props) {
                   </motion.div>
                 )}
 
-                {filteredChatList.map((contact) => (
-                  <motion.div variants={item} key={contact.id}>
+                {filteredChatList.map((contact, index) => (
+                  <motion.div variants={item} key={`chatUserWithFirebaseIndex${index}`}>
                     <ContactListItem
                       contact={contact}
-                      onContactClick={(contactId) => dispatch(getChat({ contactId, isMobile }))}
+                      onContactClick={(contactId) => dispatch(getChat({ contactId, isMobile, user }))}
                     />
                   </motion.div>
                 ))}
@@ -252,7 +252,7 @@ function ChatsSidebar(props) {
                   <motion.div variants={item} key={contact.id}>
                     <ContactListItem
                       contact={contact}
-                      onContactClick={(contactId) => dispatch(getChat({ contactId, isMobile }))}
+                      onContactClick={(contactId) => dispatch(getChat({ contactId, isMobile, user }))}
                     />
                   </motion.div>
                 ))}

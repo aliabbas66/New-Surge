@@ -1,21 +1,33 @@
-// import logo from './logo.svg';
-// import './App.css';
-import React, { useState }  from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route } from "react-router-dom";
-
-import Dashboard from './screens/admin panel/DashboardScreen';
-import LoginScreen from './screens/admin panel/LoginScreen';
-import Frontend from "./screens/frontened/FrontendScreen";
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './index.css'
+import { Login } from './pages/auth/Login/Login';
+import { Popup } from './pages/chat/UserChat/Popup';
+import { Chat } from './pages/chat/AdminChat/Chat';
+import { ChatBody } from './pages/chat/AdminChat/ChatBody';
+import AdminRoute from './routes/AdminRoute';
+import { Marketing } from './pages/Marketing';
 
 const App = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<LoginScreen />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="frontend" element={<Frontend />} />
-        </Routes>
-    );
+  return (
+    <div>
+      <BrowserRouter> 
+        <div>
+            <div>
+          <Switch>
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/marketing' component={Marketing} />
+            {/* <Route exact path='/signup' component={Signup} /> */}
+            <Route exact path='/' component={Popup} />
+            <AdminRoute exact path='/admin/chat/inbox' component={Chat} />
+            <AdminRoute exact path='/chat/:id' component={ChatBody} />
+          </Switch>
+        </div>
+        </div>
+      </BrowserRouter>
+    </div>
+
+  )
 }
 
 export default App;

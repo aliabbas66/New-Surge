@@ -126,6 +126,7 @@ function ChatApp(props) {
   const selectedContact = useSelector((state) =>
     selectContactById(state, state.chatApp.contacts.selectedContactId)
   );
+  console.log(selectedContact);
 
   useEffect(() => {
     dispatch(getUserData());
